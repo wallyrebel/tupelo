@@ -1,0 +1,38 @@
+﻿# Tupelo News RSS Feeds Configuration
+# Generated: 2026-01-16
+
+feeds:
+  - name: "Tupelo News Feed 1"
+    url: "https://fetchrss.com/feed/1vcaujD2G3c21vcatkBil4m3.rss"
+    category: "Local News"
+    enabled: true
+
+  - name: "Tupelo News Feed 2"
+    url: "https://fetchrss.com/feed/1vcaujD2G3c21vgkTkDmfBnQ.rss"
+    category: "Local News"
+    enabled: true
+
+  - name: "Tupelo News Feed 3"
+    url: "https://fetchrss.com/feed/1vcaujD2G3c21vgkUd7FG5je.rss"
+    category: "Local News"
+    enabled: true
+
+  - name: "Tupelo News Feed 4"
+    url: "https://fetchrss.com/feed/1vcaujD2G3c21vgkWTGFD3nu.rss"
+    category: "Local News"
+    enabled: true
+
+  - name: "Tupelo News Feed 5"
+    url: "https://fetchrss.com/feed/1vcaujD2G3c21vgkX7DmfBnR.rss"
+    category: "Local News"
+    enabled: true
+
+  - name: "Tupelo News Feed 6"
+    url: "https://fetchrss.com/feed/1vcaujD2G3c21vgkYREaLAte.rss"
+    category: "Local News"
+    enabled: true
+
+  - name: "Tupelo News Feed 7"
+    url: "https://fetchrss.com/feed/1vcaujD2G3c21vgkZV4wuCpe.rss"
+    category: "Local News"
+    enabled: true
