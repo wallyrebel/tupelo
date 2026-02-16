@@ -95,8 +95,8 @@ class OpenAIRewriter:
         clean_content = self._strip_html(content)
 
         if not clean_content or len(clean_content) < 50:
-            logger.warning("content_too_short", length=len(clean_content))
-            return None
+            logger.info("content_too_short", length=len(clean_content))
+            return "skipped"
 
         # Truncate very long content
         if len(clean_content) > 10000:

@@ -292,7 +292,9 @@ def process_feed(
                 logger=logger,
             )
 
-            if result:
+            if result == "skipped":
+                skipped += 1
+            elif result:
                 # Mark as processed
                 dedupe_store.mark_processed(
                     entry_key=entry_key,
@@ -355,6 +357,10 @@ def process_entry(
         original_title=title,
         use_original_title=feed_config.use_original_title,
     )
+
+    if rewritten == "skipped":
+        logger.info("content_skipped_too_short", title=title[:50])
+        return "skipped"
 
     if not rewritten:
         logger.error("rewrite_failed", title=title[:50])
