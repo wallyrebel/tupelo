@@ -1,0 +1,46 @@
+{
+  "site": "https://newstupelo.com",
+  "repository": "wallyrebel/tupelo",
+  "mode": "read-only",
+  "posts": [
+    {
+      "id": 2833,
+      "link": "https://newstupelo.com/tupelo-news/auditions-announced-for-live-radio-play-of-a-christmas-carol-2/",
+      "rendered_sha256": {
+        "title": "7c2957ca9daf46b7190e412eb6785de88bbf4dc44aed40e587f74891d1191c71",
+        "excerpt": "67b6c9c19a80dcf0d1f8c23107bb74ace69fec24f39b1fd890700c564bb51d6c",
+        "content": "7de6578810e95fb9a16738441b8d6d1c1519884e409d6480ac46049a0cbecc7d"
+      },
+      "replacements": {
+        "content": [
+          {
+            "old": "Theatre Carolina Theatre is holding auditions",
+            "new": "Tupelo Community Theatre scheduled auditions",
+            "count": 1
+          },
+          {
+            "old": "Auditions are scheduled for Oct. 11 at 2 p.m. and Oct. 12 at 6 p.m. They will be held at TCT Off-Broadway",
+            "new": "Auditions were scheduled for Oct. 11 at 2 p.m. and Oct. 12 at 6 p.m. at TCT Off-Broadway",
+            "count": 1
+          },
+          {
+            "old": "Participants should arrive prepared with audition material, which will be provided.",
+            "new": "The announcement said audition materials would be provided.",
+            "count": 1
+          },
+          {
+            "old": "Tickets and further details are available through Theatre Carolina Theatre.",
+            "new": "For current production information, see Tupelo Community Theatre’s original announcement.",
+            "count": 1
+          }
+        ]
+      },
+      "sources": [
+        "https://www.facebook.com/1458840056250572/posts/1717899780344597"
+      ],
+      "set": {
+        "excerpt": "Tupelo Community Theatre scheduled Oct. 11–12 auditions at TCT Off-Broadway for a live radio adaptation of A Christmas Carol."
+      }
+    }
+  ]
+}
