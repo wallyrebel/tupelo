@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "stage": "dry-run",
+  "target_id": 2933,
+  "expected_content_sha256": "ff91662f37c9a378c6ce06c54f21eb5809d309e43c54b6d7acf32a7a5ae39846",
+  "payload_sha256": "d695c7e92990a5492dd407767b76ac6caa4f3362c3b7d701103f2e7e5c77c2d4",
+  "payload": {
+    "title": "Tupelo Fire Department sets Station 5 grand opening for Oct. 28",
+    "content": "<p>The Tupelo Fire Department will hold a grand opening and dedication for Station 5 on Wednesday, Oct. 28, 2026, at 10 a.m. The event will be at 2667 S. Green Street in Tupelo. The department&#x27;s original flyer lists a ribbon-cutting ceremony, station tours and refreshments.</p>\n<p>Source: <a href=\"https://www.facebook.com/475620687686218/posts/1641432107771731\">Tupelo Fire Department announcement and flyer</a></p>\n<p><em>Correction (Oct. 27, 2026): An earlier version omitted the event details shown in the source flyer and incorrectly said joining details were unavailable.</em></p>",
+    "excerpt": "Tupelo Fire Department's Station 5 grand opening is Wednesday, Oct. 28, at 10 a.m., at 2667 S. Green Street."
+  },
+  "dry_run_receipt_sha256": null
+}

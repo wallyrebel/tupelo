@@ -1,0 +1,41 @@
+name: Fixed reviewed correction for post 2933
+on:
+  push:
+    branches: [codex/fix-post2933-20261027]
+    paths:
+      - .github/workflows/correct-post2933.yml
+      - scripts/correct_post2933.py
+      - tests/test_fixed_post2933.py
+      - corrections/post2933/**
+permissions:
+  contents: read
+concurrency:
+  group: tupelo-post2933-reviewed-correction
+  cancel-in-progress: false
+jobs:
+  correct-fixed-post:
+    if: github.repository == 'wallyrebel/tupelo' && github.ref == 'refs/heads/codex/fix-post2933-20261027'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Offline fixed-target regression tests
+        run: python -m unittest discover -s tests -p 'test_fixed_post2933.py' -v
+      - name: Fixed reviewed correction stage
+        env:
+          WORDPRESS_BASE_URL: ${{ secrets.WORDPRESS_BASE_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
+        run: python scripts/correct_post2933.py
+      - name: Save sanitized correction receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fixed-post2933-${{ github.run_id }}
+          path: data/correction-post2933/result.json
+          retention-days: 30
