@@ -1,0 +1,43 @@
+{
+  "state": "dry_run_verified",
+  "repository": "wallyrebel/tupelo",
+  "host": "newstupelo.com",
+  "post_id": 2933,
+  "stage": "dry-run",
+  "payload_sha256": "d695c7e92990a5492dd407767b76ac6caa4f3362c3b7d701103f2e7e5c77c2d4",
+  "ledger_sha256": "39d2116adf2cce4349f27a62ff5d9f86bf2017423dd18d494daaf72ab8667cac",
+  "implementation_sha256": "955199df66330d95e37547c5d497a381e3c3531eacbdce056e1900e306d6ed21",
+  "run_id": "40531615933",
+  "commit": "dbe84acf22f8876fc222731c73978cede49aa3a6",
+  "writes_attempted": 0,
+  "before_raw_sha256": {
+    "title": "ff5a3cc96bb26be651394347462a4166e0466309d703bb7bcf97947c546331d8",
+    "content": "24a6fd13c6a342cf95bb424d4156af76588e8791b5d78eda24188260a8abbf24",
+    "excerpt": "228306a4094ebc0563e70e5c5d43b4e4940ce9e42cabf210700e64febd070239"
+  },
+  "before_rendered_sha256": {
+    "title": "ff5a3cc96bb26be651394347462a4166e0466309d703bb7bcf97947c546331d8",
+    "content": "ff91662f37c9a378c6ce06c54f21eb5809d309e43c54b6d7acf32a7a5ae39846",
+    "excerpt": "0bba4b92216b0a6ebc49c00c26c5918da63fa1d6e08b92847e97ec7a2eec78bd"
+  },
+  "before_modified_gmt": "2026-10-27T03:31:19",
+  "before_identity": {
+    "id": 2933,
+    "status": "publish",
+    "slug": "tupelo-fire-department-invites-community-to-join",
+    "link": "https://newstupelo.com/tupelo-news/tupelo-fire-department-invites-community-to-join/",
+    "date": "2026-10-26T22:31:19",
+    "date_gmt": "2026-10-27T03:31:19",
+    "author": 2,
+    "featured_media": 2932,
+    "categories": [
+      3
+    ],
+    "tags": [],
+    "comment_status": "open",
+    "ping_status": "closed",
+    "sticky": false,
+    "template": "",
+    "format": "standard"
+  }
+}
