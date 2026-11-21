@@ -2,6 +2,11 @@
 # Generated: 2026-01-16
 
 feeds:
+  - name: "Tupelo Golden Wave final football scores"
+    url: "https://www.maxpreps.com/ms/tupelo/tupelo-golden-wave/football/schedule/"
+    default_category: "Tupelo News"
+    default_tags: ["Tupelo football"]
+    max_per_run: 1
   - name: "Mississippi Governor's Office releases"
     url: "https://governorreeves.ms.gov/feed/"
     default_category: "Mississippi News"

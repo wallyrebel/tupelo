@@ -6,6 +6,7 @@ from typing import Any, Optional
 
 import feedparser
 import requests
+from rss_to_wp.feeds.football import SCHEDULE, finals
 from feedparser.exceptions import CharacterEncodingOverride, NonXMLContentType
 
 from rss_to_wp.utils import get_logger
@@ -25,6 +26,8 @@ def parse_feed(url: str) -> Optional[dict[str, Any]]:
     logger.info("parsing_feed", url=url)
 
     try:
+        if url == SCHEDULE:
+            return finals()
         response = requests.get(url, timeout=(10, 30), headers={"User-Agent": feedparser.USER_AGENT})
         response.raise_for_status()
         headers = {key.lower(): value for key, value in response.headers.items()}
