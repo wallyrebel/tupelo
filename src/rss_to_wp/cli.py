@@ -25,6 +25,7 @@ from rss_to_wp.feeds import (
     parse_feed,
     pick_entries,
 )
+from rss_to_wp.feeds.golf import FEED as GOLF_FEED, unsupported_tie_method
 from rss_to_wp.images import download_image, find_fallback_image, find_rss_image
 from rss_to_wp.rewriter import OpenAIRewriter
 from rss_to_wp.storage import DedupeStore
@@ -390,6 +391,10 @@ def process_entry(
     if not rewritten:
         logger.error("rewrite_failed", title=title[:50])
         return None
+
+    if feed_config.url == GOLF_FEED and unsupported_tie_method(content, rewritten):
+        logger.warning("golf_tie_method_unverified", title=title[:80])
+        return "skipped"
 
     # Find image
     featured_media_id = None

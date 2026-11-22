@@ -4,6 +4,7 @@
 feeds:
   - name: "Tupelo state golf scorecards"
     url: "https://www.misshsaa.com/feed/"
+    use_original_title: true
     default_category: "Tupelo News"
     default_tags: ["Tupelo golf"]
     max_per_run: 3
