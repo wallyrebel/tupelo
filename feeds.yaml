@@ -2,6 +2,11 @@
 # Generated: 2026-01-16
 
 feeds:
+  - name: "Tupelo state golf scorecards"
+    url: "https://www.misshsaa.com/feed/"
+    default_category: "Tupelo News"
+    default_tags: ["Tupelo golf"]
+    max_per_run: 3
   - name: "Tupelo Golden Wave final football scores"
     url: "https://www.maxpreps.com/ms/tupelo/tupelo-golden-wave/football/schedule/"
     default_category: "Tupelo News"
