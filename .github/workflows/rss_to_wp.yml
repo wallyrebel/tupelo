@@ -21,9 +21,14 @@ on:
         required: false
         default: ''
         type: string
+      only_source_url:
+        description: 'Optional exact article link to recover within single_feed'
+        required: false
+        type: string
 
 env:
   SINGLE_FEED: ${{ github.event.inputs.single_feed }}
+  ONLY_SOURCE_URL: ${{ inputs.only_source_url }}
   DRY_RUN: ${{ github.event.inputs.dry_run || 'false' }}
   PYTHON_VERSION: '3.11'
 
@@ -93,6 +98,9 @@ jobs:
           fi
           if [[ -n "$SINGLE_FEED" ]]; then
             args+=(--single-feed "$SINGLE_FEED")
+          fi
+          if [[ -n "$ONLY_SOURCE_URL" ]]; then
+            args+=(--only-source-url "$ONLY_SOURCE_URL")
           fi
           python -m rss_to_wp run "${args[@]}"
 

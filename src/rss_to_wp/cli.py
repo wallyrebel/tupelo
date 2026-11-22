@@ -89,11 +89,16 @@ def run(
         "-h",
         help="Time window in hours for entries (strictly enforced).",
     ),
+    only_source_url: Optional[str] = typer.Option(
+        None, "--only-source-url", help="Recover only this exact article link in the selected feed."
+    ),
 ) -> None:
     """Run the RSS to WordPress automation.
 
     Fetches RSS feeds, rewrites content, and publishes to WordPress.
     """
+    if only_source_url and not single_feed:
+        raise typer.BadParameter("--only-source-url requires --single-feed")
     # Load settings
     try:
         settings = get_app_settings()
@@ -170,6 +175,7 @@ def run(
                 hours=hours,
                 logger=logger,
                 published_articles=published_articles,  # Pass for tracking
+                only_source_url=only_source_url,
             )
             total_processed += processed
             total_skipped += skipped
@@ -236,6 +242,7 @@ def process_feed(
     hours: int,
     logger,
     published_articles: Optional[list[dict]] = None,
+    only_source_url: Optional[str] = None,
 ) -> tuple[int, int, int]:
     """Process a single feed.
 
@@ -253,7 +260,7 @@ def process_feed(
     if feed is None:
         logger.error("feed_unavailable", name=feed_config.name)
         return (0, 0, 1)
-    if not feed.entries:
+    if not feed.entries and not only_source_url:
         logger.info("feed_empty", name=feed_config.name)
         return (0, 0, 0)
 
@@ -264,6 +271,12 @@ def process_feed(
         hours_window=hours,
         timezone=settings.timezone,
     )
+
+    if only_source_url:
+        entries = [entry for entry in entries if get_entry_link(entry) == only_source_url]
+        if len(entries) != 1:
+            logger.error("recovery_source_match_count", name=feed_config.name, matches=len(entries))
+            return (0, 0, 1)
 
     if not entries:
         logger.info("no_valid_entries", name=feed_config.name)

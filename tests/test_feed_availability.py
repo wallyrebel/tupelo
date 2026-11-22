@@ -1,4 +1,5 @@
 from unittest.mock import Mock
+from types import SimpleNamespace
 
 import pytest
 import requests
@@ -37,3 +38,23 @@ def test_editorially_accepted_story_with_no_optional_image(monkeypatch):
     assert result == wp.create_post.return_value
     wp.upload_media.assert_not_called()
     assert wp.create_post.call_args.kwargs["featured_media_id"] is None
+
+
+@pytest.mark.parametrize("matches", [0, 1, 2])
+def test_targeted_recovery_never_processes_sibling_or_ambiguous_items(monkeypatch, matches):
+    target = "https://theatre.example/auditions"
+    siblings = [{"link": "https://theatre.example/other", "title": "Other announcement"}]
+    items = siblings + [{"link": target, "title": "Auditions", "id": str(i)} for i in range(matches)]
+    monkeypatch.setattr(cli, "parse_feed", lambda url: SimpleNamespace(entries=items))
+    monkeypatch.setattr(cli, "pick_entries", lambda entries, **kwargs: entries)
+    store = Mock()
+    store.is_processed.return_value = True
+    writer, wp = Mock(), Mock()
+    result = cli.process_feed(FeedConfig(name="Theatre", url="https://theatre.example/feed"),
+                              Mock(), store, writer, wp, False, 48, Mock(), only_source_url=target)
+    assert result == ((0, 1, 0) if matches == 1 else (0, 0, 1))
+    assert store.is_processed.call_count == (1 if matches == 1 else 0)
+    if matches == 1:
+        store.is_processed.assert_called_with(cli.generate_entry_key(items[-1], "https://theatre.example/feed"))
+    writer.rewrite.assert_not_called()
+    wp.create_post.assert_not_called()
