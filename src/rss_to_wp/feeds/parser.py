@@ -8,12 +8,14 @@ import feedparser
 import requests
 from rss_to_wp.feeds.football import SCHEDULE, finals
 from rss_to_wp.feeds.library import CALENDAR, library_calendar
+from rss_to_wp.feeds.holiday_forecast import travel_forecast
 from feedparser.exceptions import CharacterEncodingOverride, NonXMLContentType
 
 from rss_to_wp.feeds.golf import FEED as GOLF_FEED, local_golf
 from rss_to_wp.utils import get_logger
 
 logger = get_logger("feeds.parser")
+FORECAST = "https://api.weather.gov/gridpoints/MEG/93,29/forecast"
 
 
 def parse_feed(url: str) -> Optional[dict[str, Any]]:
@@ -28,6 +30,8 @@ def parse_feed(url: str) -> Optional[dict[str, Any]]:
     logger.info("parsing_feed", url=url)
 
     try:
+        if url == FORECAST:
+            return travel_forecast(FORECAST, "Tupelo", "https://forecast.weather.gov/MapClick.php?lat=34.26&lon=-88.70")
         if url == CALENDAR:
             return library_calendar()
         if url == SCHEDULE:

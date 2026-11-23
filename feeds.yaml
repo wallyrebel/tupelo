@@ -2,6 +2,11 @@
 # Generated: 2026-01-16
 
 feeds:
+  - name: "National Weather Service Tupelo holiday travel forecast"
+    url: "https://api.weather.gov/gridpoints/MEG/93,29/forecast"
+    default_category: "Tupelo News"
+    default_tags: ["Tupelo weather"]
+    max_per_run: 1
   - name: "Lee County Library upcoming programs"
     url: "https://www.leeitawambalibrary.org/events"
     default_category: "Tupelo News"
